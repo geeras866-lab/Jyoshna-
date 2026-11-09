@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q Jyoshna-App.zip
+      - name: Unzip project
+        run: |
+          shopt -s nullglob
+          for z in *.zip; do unzip -oq "$z"; done
+          ls
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
